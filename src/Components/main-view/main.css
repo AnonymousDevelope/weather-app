@@ -1,0 +1,12 @@
+.weather-card{
+    height: auto;
+    background-color: aqua;
+    border-radius: 1rem;
+}
+.weather-card .data .img{
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+}

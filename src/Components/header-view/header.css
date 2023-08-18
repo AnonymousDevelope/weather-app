@@ -1,0 +1,50 @@
+.container-weather{
+    margin: 0 auto; 
+    padding: 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between!important;
+    align-items: center;
+}
+.container-weather .navbar-weather{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-weather .navbar-weather ul{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.container-weather .navbar-weather .navbar-menu ul li{
+    list-style: none;
+    padding: 10px;
+}
+
+.container-weather .navbar-weather .navbar-menu ul li a{
+    text-decoration: none;
+}
+.container-weather .navbar-weather .navbar-search{
+    padding: 5px;
+}
+.container-weather .navbar-weather .navbar-search .form-weather{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    /* padding: 10px; */
+    border:none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* put space between classes */
+.container-weather .navbar-weather .lang-weather ul li{
+    list-style: none;
+    padding: 10px;
+}
