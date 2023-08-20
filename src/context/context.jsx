@@ -22,10 +22,18 @@ export const WeatherContextProvider = ({ children }) => {
   const feeltemp = data?.current?.feelslike_c || '00';
   const dateStr = `${daysOfWeek[day]} ${now.getDate()} ${monthsOfYear[month]} `;
   const image = data?.current?.condition?.icon || '00';
+  const sunrise = data?.forecast?.forecastday[0]?.astro?.sunrise || '00';
+  const sunset = data?.forecast?.forecastday[0]?.astro?.sunset || '00';
   const key = "d17440e76748470b893125348231908";
+  const [hidden,setHidden] = useState(true);
+  const [forecastdayclone, setForecastdayclone] = useState([]);
   useEffect(() => {
     weatherApi();
   }, [city]);
+  const modal = {
+    hidden,
+    setHidden,
+  }
   const weatherData = useMemo(() => {
     return {
       cityName,
@@ -35,14 +43,18 @@ export const WeatherContextProvider = ({ children }) => {
       wind_speed,
       compass,
       feeltemp,
+      image,
       dateStr,
-      image
+      sunrise,
+      sunset,
+      daysOfWeek,
+      monthsOfYear
     }
   })
   const weatherApi = async () => {
     try {
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`
+        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=14`
       );
       setData(error ? {} : response.data);
       setLoading(false);
@@ -53,7 +65,7 @@ export const WeatherContextProvider = ({ children }) => {
   };
 
   return (
-    <WeatherContext.Provider value={{ data, setCity,loading,setLoading, weatherData,error}}>
+    <WeatherContext.Provider value={{ data, setCity,loading,setLoading,forecastdayclone,setForecastdayclone,modal,weatherData,error}}>
       {children}
     </WeatherContext.Provider>
   );

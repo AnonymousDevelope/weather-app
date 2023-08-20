@@ -1,0 +1,38 @@
+.hourly-item {
+    height: 150px;
+    /* border: 1px solid var(--secondary); */
+    border-radius: 1rem;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+}
+
+.hourly-item .temprature-hourly {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hourly-item .temprature-hourly .temp {
+    font-size: 35px;
+    font-family: monospace;
+    color: var(--secondary);
+    vertical-align: middle;
+}
+.hourly-item .temprature-hourly .max-temp{
+    font-size: 13px;
+    font-family: monospace;
+    color: var(--secondary);
+
+}
+
+.hourly-item .date{
+    font-size: 20px;
+    font-family: monospace;
+    text-align: center;
+    color: var(--secondary);
+}

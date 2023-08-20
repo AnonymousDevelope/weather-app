@@ -1,6 +1,9 @@
+
+/* const colors */
+
 .weather-card{
     height: auto;
-    background-color: #00B9DF;
+    background-color: var(--primary);
     border-radius: 1rem;
     width: 65%;
 }
@@ -34,7 +37,7 @@
     text-align: start;
 }
 .weather-card .cn_temp .current_city .current_city_date{
-    color: rgb(209,255,255);
+    color: var(--secondary);
 }
 .weather-card .cn_temp .current_city .current_city_temp{
     display: flex;
@@ -62,7 +65,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     font-family: monospace;
-    color: rgb(209, 255, 255);
+    color: var(--secondary);
     text-transform: capitalize;
 }
 
@@ -84,7 +87,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     font-family: monospace;
-    color: rgb(209, 255, 255);
+    color: var(--secondary);
     text-transform: capitalize;
     margin: 0 auto;
 }
@@ -93,7 +96,7 @@
 /* full data style */
 
 .weather-card .cn_temp .full_data ul li .icon i{
-    color: rgb(209, 255, 255);
+    color: var(--secondary);
     font-size: 23px;
 }
 .weather-card .cn_temp .full_data ul li .text{
@@ -102,3 +105,5 @@
     font-family: monospace;
     font-size: 24px;
 }
+
+

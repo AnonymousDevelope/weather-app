@@ -1,0 +1,34 @@
+.hourly-container {
+    background-color: var(--primary) !important;
+    opacity: 0.8;
+    z-index: 99;
+}
+
+.hourly-container .close {
+    color: var(--primary);
+    padding: 5px 10px;
+    margin: 10px;
+    cursor: pointer;
+    float: right;
+    border-radius: 1rem;
+    background-color: var(--secondary);
+    width: fit-content;
+}
+
+.hourly-container .close:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.hourly-container .container-item {
+    width: fit-content;
+    vertical-align: middle;
+    /* position: absolute; */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+}
+
+/*add design for document overlow hidden */

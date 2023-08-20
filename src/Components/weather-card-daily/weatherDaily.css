@@ -1,0 +1,44 @@
+.weather-card-daily {
+    width: 65%;
+    border: 1px solid;
+    margin: 10px auto;
+    border: none;
+    /* background-color: var(--primary); */
+    border-radius: 1rem;
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+}
+
+.weather-card-daily .card-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--secondary);
+    background-color: var(--primary);
+    border-radius: 1rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.weather-card-daily .card-item .icon{
+    width: auto;
+    /* margin: 0 auto; */
+}
+.weather-card-daily .card-item .date{
+    text-align: center;
+    font-size: 20px;
+    font-family: monospace;
+    color: var(--secondary);
+}
+
+.weather-card-daily .card-item .temprature-daily{
+    text-align: center;
+    font-size: 35px;
+    vertical-align: middle;
+    font-family: monospace;
+    color: #fff;
+    margin: 0 auto;
+    /* vertical center */
+    display: flex;
+    align-items: center;
+}

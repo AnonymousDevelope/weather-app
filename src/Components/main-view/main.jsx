@@ -1,11 +1,11 @@
 import React, { memo, useContext } from 'react';
 import { WeatherContext } from '../../context/context'; // Make sure to import the Context correctly
 import './main.css';
+import  {WeatherDaily,WeatherHourly} from '../index';
 import "bootstrap-icons/font/bootstrap-icons.css"
 function Main() {
   const {data,loading,error,weatherData} = useContext(WeatherContext);
   // Replace placeholders with actual data
-  console.log(data);
   const cityName =weatherData.cityName
   if(loading){
     return <div>Loading...</div>
@@ -14,6 +14,7 @@ function Main() {
     return <div>Error...</div>
   }
   return (
+    <>
     <div className="weather-card shadow  border mt-5 mx-auto">
       <div className="row w-100">
         <div className="title text-center p-2">
@@ -65,11 +66,11 @@ function Main() {
                 <ul className="list-group">
                   <li className="row">
                     <div className="col-md-2 col-sm-2 col-lg-2 icon"><i className="bi  bi-sunrise"></i></div>
-                    <div className="col-md-10 col-sm-10 col-lg-10 text">Sunrise 07:00</div>
+                    <div className="col-md-10 col-sm-10 col-lg-10 text">Sunrise {weatherData?.sunrise}</div>
                   </li>
                   <li className="row">
                     <div className="col-md-2 col-sm-2 col-lg-2 icon"><i className="bi fs-4 text-white bi-sunset"></i></div>
-                    <div className="col-md-10 col-sm-10 col-lg-10 text">Sunset 19:00</div>
+                    <div className="col-md-10 col-sm-10 col-lg-10 text">Sunset {weatherData?.sunset}</div>
                   </li>
                   <li className="row">
                     <div className="col-md-2 col-sm-2 col-lg-2 icon"><i className="bi fs-4 text-white bi-droplet"></i></div>
@@ -102,6 +103,9 @@ function Main() {
         </div>
       </div>
     </div>
+      <WeatherDaily />
+      <WeatherHourly />
+    </>
   );
 }
 
