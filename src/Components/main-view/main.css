@@ -1,12 +1,104 @@
 .weather-card{
     height: auto;
-    background-color: aqua;
+    background-color: #00B9DF;
     border-radius: 1rem;
+    width: 65%;
 }
-.weather-card .data .img{
-    margin: 10px;
-    width: 150px;
-    height: 150px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 50%;
+.weather-card .data{
+    padding: 25px;
+}   
+.weather-card .cn_temp .current_city{
+    /* style with display  */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+}
+.weather-card .cn_temp .current_city .current_city_name,
+.weather-card .cn_temp .current_city .current_city_date
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #fff;
+    margin:0 20px;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-family: monospace;
+    gap: 15px;
+}
+.weather-card .cn_temp .current_city .current_city_name .name{
+    text-align: end;
+}
+.weather-card .cn_temp .current_city .current_city_name .icon{
+    text-align: start;
+}
+.weather-card .cn_temp .current_city .current_city_date{
+    color: rgb(209,255,255);
+}
+.weather-card .cn_temp .current_city .current_city_temp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #fff;
+    margin:0 20px;
+    text-transform: capitalize;
+    font-family: monospace;
+    gap: 15px;
+}
+.weather-card .cn_temp .current_city .current_city_temp .icon{
+    font-size: 3.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+.weather-card .cn_temp .current_city .current_city_temp .current_temp{
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.weather-card .cn_temp .current_city  .current_city_temp .current_temp .feel_temp {
+    text-align: end;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: rgb(209, 255, 255);
+    text-transform: capitalize;
+}
+
+
+/* default weather image */
+
+.weather-card .cn_temp .default_weather_image{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.weather-card .cn_temp .default_weather_image img{
+    width: 185px;
+    height: 185px;
+}
+.weather-card .cn_temp .default_weather_image .default_weather_text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: rgb(209, 255, 255);
+    text-transform: capitalize;
+    margin: 0 auto;
+}
+
+
+/* full data style */
+
+.weather-card .cn_temp .full_data ul li .icon i{
+    color: rgb(209, 255, 255);
+    font-size: 23px;
+}
+.weather-card .cn_temp .full_data ul li .text{
+    color: #fff;
+    font-weight: 300;
+    font-family: monospace;
+    font-size: 24px;
 }

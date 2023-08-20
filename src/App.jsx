@@ -2,7 +2,6 @@ import { useState } from 'react'
 import {Header, Main} from './Components'
 import "bootstrap/dist/css/bootstrap.min.css"
 import logo from "./logo/weatherAppLogo.png"
-import axios from 'axios'
 function App() {
   return (
     <>
