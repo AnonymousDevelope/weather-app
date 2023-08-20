@@ -54,7 +54,7 @@ export const WeatherContextProvider = ({ children }) => {
   const weatherApi = async () => {
     try {
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=14`
+        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`
       );
       setData(error ? {} : response.data);
       setLoading(false);

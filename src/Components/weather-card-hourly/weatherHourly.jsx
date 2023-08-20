@@ -5,6 +5,7 @@ import { WeatherContext } from '../../context/context';
 
 const WeatherHourly = () => {
   const { data, modal, forecastdayclone } = useContext(WeatherContext);
+
   console.log(forecastdayclone);
 
   const containerStyle = {
