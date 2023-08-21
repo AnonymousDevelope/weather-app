@@ -5,7 +5,7 @@ import { Input } from '../../ui-components';
 
 const Header = ({ className, logoImage }) => {
   const [city1, setCity1] = useState('');
-  const { setCity, error, setLoading, setError } = useContext(WeatherContext);
+  const { setCity, setLoading, setError } = useContext(WeatherContext);
   const handleCityChange = (e) => {
     setCity1(e.target.value);
   };

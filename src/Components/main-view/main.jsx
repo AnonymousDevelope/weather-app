@@ -5,7 +5,7 @@ import { WeatherDaily, WeatherHourly } from '../index';
 import { Loading,Alert } from '../../ui-components'
 import "bootstrap-icons/font/bootstrap-icons.css"
 function Main() {
-  const { data, loading, error, weatherData } = useContext(WeatherContext);
+  const {loading, weatherData } = useContext(WeatherContext);
   // Replace placeholders with actual data
   const cityName = weatherData.cityName
   if (loading) {

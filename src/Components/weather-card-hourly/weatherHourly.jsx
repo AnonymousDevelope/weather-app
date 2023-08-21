@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import "./weatherHourly.css";
 import HourlyItem from '../weather-hourly-item/hourlyItem';
 import { WeatherContext } from '../../context/context';
+import { Loading } from '../../ui-components';
 
 const WeatherHourly = () => {
-  const { data, modal, forecastdayclone } = useContext(WeatherContext);
+  const {modal, forecastdayclone } = useContext(WeatherContext);
+
   const containerStyle = {
     display: modal.hidden ? "none" : "block",
     overflow: "auto",
+
   };
 
   return (
@@ -21,7 +24,7 @@ const WeatherHourly = () => {
             <HourlyItem key={index} item={item} /> 
           ))
         ) : (
-          <p>Loading hourly data...</p>
+          <Loading />
         )}
       </div>
     </div>

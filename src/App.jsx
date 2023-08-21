@@ -5,8 +5,8 @@ import logo from "./logo/weatherAppLogo.png"
 import "./index.css"
 import { WeatherContext } from './context/context'
 import { Alert } from './ui-components'
-function App() {
-  const { data, error,setError } = useContext(WeatherContext);
+const App=()=> {
+  const { data, error } = useContext(WeatherContext);
   if (data && !error) {
     return (
       <>
@@ -20,27 +20,13 @@ function App() {
     )
   }
   if (error.message == "Network Error") {
-    setError(null)
     return (
       <>
         <Header logoImage={logo} className="shadow font-monospace" />
         <Alert >
-          {console.log(error)}
           Ma'lumotlaringiz topilmadi iltimos intenet bilan ulanishni tekshirib ko'ring
         </Alert>
-      </>
-    )
-  }
-  if (error?.response?.status == 400) {
-    
-    return (
-      <>
-        <Header logoImage={logo} className="shadow font-monospace" />
-        <Alert >
-          {console.log(error)}
-          Bunday davlat majud emas
-        </Alert>
-      </>
+      </> 
     )
   }
 }
