@@ -12,6 +12,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .container-weather .navbar-weather ul{
@@ -20,8 +21,13 @@
     flex-direction: row;
     gap: 20px;
 }
-
-.container-weather .navbar-weather .navbar-menu ul li{
+.container-weather .navbar-weather .navbar-responsive{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.container-weather .navbar-weather .navbar-responsive .navbar-menu ul li{
     list-style: none;
     padding: 10px;
 }
@@ -47,4 +53,13 @@
 .container-weather .navbar-weather .lang-weather ul li{
     list-style: none;
     padding: 10px;
+}
+
+@media screen and (max-width:960px) {
+    .container-weather .navbar-weather .navbar-responsive{
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        margin: 0 auto;
+    }
 }

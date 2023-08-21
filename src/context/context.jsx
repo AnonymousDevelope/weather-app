@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, useMemo, memo } from "react";
+import React, { useState, createContext, useEffect, useMemo } from "react";
 import axios from "axios";
 
 export const WeatherContext = createContext();
@@ -8,10 +8,10 @@ export const WeatherContextProvider = ({ children }) => {
   const [data, setData] = useState({});
   const [city, setCity] = useState("toshkent");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null); // Xatoni birinchi bo'lib null deb belgilash
+
   const cityName = city || 'City Name';
   const temp = Math.round(data?.current?.temp_c) || '00';
-  //data convert to string 
   const now = new Date();
   const day = now.getDay();
   const month = now.getMonth();
@@ -25,15 +25,18 @@ export const WeatherContextProvider = ({ children }) => {
   const sunrise = data?.forecast?.forecastday[0]?.astro?.sunrise || '00';
   const sunset = data?.forecast?.forecastday[0]?.astro?.sunset || '00';
   const key = "d17440e76748470b893125348231908";
-  const [hidden,setHidden] = useState(true);
+  const [hidden, setHidden] = useState(true);
   const [forecastdayclone, setForecastdayclone] = useState([]);
+
   useEffect(() => {
     weatherApi();
   }, [city]);
+
   const modal = {
     hidden,
     setHidden,
-  }
+  };
+
   const weatherData = useMemo(() => {
     return {
       cityName,
@@ -49,23 +52,25 @@ export const WeatherContextProvider = ({ children }) => {
       sunset,
       daysOfWeek,
       monthsOfYear
-    }
-  })
+    };
+  }, [city, data]);
+
   const weatherApi = async () => {
     try {
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`
+        `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`
       );
-      setData(error ? {} : response.data);
+      setData(response.data);
       setLoading(false);
+      setError(null); // Xato yo'q deb belgilash
     } catch (error) {
-      setError(error);
+      setError(error); // Xato sodir bo'lganda xatoni o'rniga yuboramiz
       setLoading(false);
     }
   };
 
   return (
-    <WeatherContext.Provider value={{ data, setCity,loading,setLoading,forecastdayclone,setForecastdayclone,modal,weatherData,error}}>
+    <WeatherContext.Provider value={{ data, setCity, loading, setLoading, forecastdayclone, setForecastdayclone, modal, weatherData, error, setError }}>
       {children}
     </WeatherContext.Provider>
   );
