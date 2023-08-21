@@ -12,10 +12,8 @@ const Header = ({ className, logoImage }) => {
 
   const getWeather = async () => {
     setLoading(true);
-
     try {
       await setCity(city1);
-      setCity1('');
     } catch (error) {
       setError(error);
     } finally {

@@ -29,6 +29,16 @@ const App=()=> {
       </> 
     )
   }
+  if(error?.response?.status === 400 ){
+    return (
+      <>
+        <Header logoImage={logo} className="shadow font-monospace" />
+        <Alert >
+          Bunday davlat mavjud emas iltimos qaytadan urinib ko'ring
+        </Alert>
+      </> 
+    )
+  }
 }
 
 export default App
