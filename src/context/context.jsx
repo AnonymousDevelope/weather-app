@@ -6,7 +6,8 @@ const daysOfWeek = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanb
 const monthsOfYear = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
 export const WeatherContextProvider = ({ children }) => {
   const [data, setData] = useState({});
-  const [city, setCity] = useState("toshkent");
+  // city default value get location navigator
+  const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Xatoni birinchi bo'lib null deb belgilash
 
@@ -27,7 +28,24 @@ export const WeatherContextProvider = ({ children }) => {
   const key = "d17440e76748470b893125348231908";
   const [hidden, setHidden] = useState(true);
   const [forecastdayclone, setForecastdayclone] = useState([]);
-
+  const getLocation = (lon, lat) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lon},${lat}&days=7`);
+        setCity(response.data?.location?.name);
+        setData(response.data);
+        setLoading(false);
+        resolve(response.data);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+        setError(error);
+        reject(error);
+      }
+    });
+  };
+  
   useEffect(() => {
     weatherApi();
   }, [city]);
@@ -51,12 +69,13 @@ export const WeatherContextProvider = ({ children }) => {
       sunrise,
       sunset,
       daysOfWeek,
-      monthsOfYear
+      monthsOfYear,
     };
   }, [city, data]);
 
   const weatherApi = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`
       );
@@ -70,7 +89,7 @@ export const WeatherContextProvider = ({ children }) => {
   };
 
   return (
-    <WeatherContext.Provider value={{ data, setCity, loading, setLoading, forecastdayclone, setForecastdayclone, modal, weatherData, error, setError }}>
+    <WeatherContext.Provider value={{ data,getLocation, setCity,city, loading, setLoading, forecastdayclone, setForecastdayclone, modal, weatherData, error, setError }}>
       {children}
     </WeatherContext.Provider>
   );

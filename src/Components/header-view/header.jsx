@@ -1,11 +1,24 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { WeatherContext } from '../../context/context';
 import './header.css';
 import { Input } from '../../ui-components';
 
 const Header = ({ className, logoImage }) => {
   const [city1, setCity1] = useState('');
-  const { setCity, setLoading, setError } = useContext(WeatherContext);
+  const { setCity, setLoading, setError, getLocation } = useContext(WeatherContext);
+  const [cityLocation, setCityLocation] = useState('');
+  // add geoLocation
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLoading(true);
+      getLocation(position.coords.latitude, position.coords.longitude)
+      .then((res) => {
+        setCityLocation(res.location.name);
+        setLoading(false)
+        setCity(res.location.name);
+      })
+    });
+  }, [cityLocation, setCityLocation]);
   const handleCityChange = (e) => {
     setCity1(e.target.value);
   };
